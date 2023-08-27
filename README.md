@@ -1,13 +1,36 @@
+# Cognito IDプロバイダ-Postmanアダプタ
 
-## 起動 
+## はじめに
+
+- 認証機能実装でCognito IDプロバイ使を使っているWEB APIを、Postmanで動作確認するときに役立つアダプタ
+
+## 経緯など
+
+- PostmanでWEB APIの動作確認時にCognitoのトークンを取得して認証に使いたい時がある
+- Pre-request ScriptからHTTPリクエストでCognitoのトークン取得する前提でアダプタを用意しようと思った
+  - node.jsで動くシンプルなやつ
+
+## 実行環境
+
+- node.js 18以上
+
+## 使い方
+
+1. サーバを起動しておく ( npm install -> npm run start )
+2. Postmanと繋ぐ ( Pre-request Scriptに設定 )
+
+### 1. サーバを起動しておく
+
+- コマンド実行
 
 ```
+npm install
 npm run start
 ```
 
-## 動作確認
+- 動作確認
 
-- 5963ポートでサーバが起動していること(200応答が返ってくること)を確認
+`5963ポートでサーバが起動していること(200応答が返ってくること)を確認`
 
 ```
 $ curl --head -XGET "http://localhost:5963?test_username=sutekinausername&test_password=fujikawaA5&aws_region=ap-northeast-1&cognito_user_pool_id=ap-northeast-1_fugaVAyI&cognito_client_id=hogediuh5k2m6nfmat3iordvodm"
@@ -19,7 +42,7 @@ Connection: keep-alive
 Keep-Alive: timeout=5
 ```
 
-## Postmanと繋ぐ
+### 2. Postmanと繋ぐ
 
 - Pre-request Scriptに設定
 - This script will execute before every request in this collection. Learn more about 
