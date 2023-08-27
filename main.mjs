@@ -18,11 +18,6 @@ import {
 } from "amazon-cognito-identity-js/lib/DateHelper.js";
 
 const port = 5963;
-const awsRegion = process.env.AWS_REGION;
-const clientId = process.env.COGNITO_WEB_CLIENT_ID;
-const userPoolId = process.env.COGNITO_USER_POOL_ID;
-const username = process.env.TEST_USERNAME;
-const password = process.env.TEST_PASSWORD;
 
 const AuthenticationHelper = AuthenticationHelperWrapper.default;
 const BigInteger = BigIntegerWrapper.default;
