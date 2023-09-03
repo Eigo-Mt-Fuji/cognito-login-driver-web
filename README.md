@@ -54,9 +54,13 @@ const awsRegion = pm.environment.get("aws_region");
 const cognitoUserPoolId = pm.environment.get("cognito_user_pool_id");
 const cognitoClientId = pm.environment.get("cognito_client_id");
 
-pm.sendRequest(`http://localhost:5963?test_username=${testUsername}&test_password=${testPassword}&aws_region=${awsRegion}&cognito_user_pool_id=${cognitoUserPoolId}&cognito_client_id=${cognitoClientId}`, function (err, response) {
-    pm.environment.set("bearerToken", response.json()["COGNITO_ID_TOKEN"]);
-});
+pm.sendRequest(
+    `http://localhost:5963?test_username=${encodeURIComponent(testUsername)}&test_password=${encodeURIComponent(testPassword)}&aws_region=${awsRegion}&cognito_user_pool_id=${cognitoUserPoolId}&cognito_client_id=${cognitoClientId}`,
+    function (err, response) {
+        pm.environment.set("bearerToken", response.json()["COGNITO_ID_TOKEN"]);
+    }
+);
+
 ```
 
 ## 備考
